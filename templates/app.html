@@ -1,0 +1,40 @@
+<!-- app.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Price Prediction</title>
+</head>
+<body>
+    <h1>Home Price Prediction</h1>
+    <form action="/predict_home_price" method="post">
+        <label for="total_sqft">Total Sqft:</label>
+        <input type="text" name="total_sqft" required><br>
+
+        <label for="bhk">BHK:</label>
+        <input type="text" name="bhk" required><br>
+
+        <label for="bath">Bath:</label>
+        <input type="text" name="bath" required><br>
+
+        <label for="location">Location:</label>
+        <select name="location">
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_result is defined %}
+        <p>Estimated Price: {{ prediction_result.estimated_price }}</p>
+        {# Add any other information you want to display from the JSON response #}
+    {% endif %}
+    {% if error is defined %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
