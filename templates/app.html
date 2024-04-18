@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Price Prediction</title>
 </head>
-<body>
+<body style="text-align: center;">
     <h1>Home Price Prediction</h1>
     <form action="/predict_home_price" method="post">
         <label for="total_sqft">Total Sqft:</label>
-        <input type="text" name="total_sqft" required><br>
+        <input type="text" name="total_sqft" required><br><br>
 
         <label for="bhk">BHK:</label>
-        <input type="text" name="bhk" required><br>
+        <input type="text" name="bhk" required><br><br>
 
         <label for="bath">Bath:</label>
-        <input type="text" name="bath" required><br>
+        <input type="text" name="bath" required><br><br>
 
         <label for="location">Location:</label>
         <select name="location">
             {% for loc in locations %}
                 <option value="{{ loc }}">{{ loc }}</option>
             {% endfor %}
-        </select><br>
+        </select><br><br>
 
         <input type="submit" value="Predict">
     </form>
